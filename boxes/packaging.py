@@ -10,7 +10,7 @@ def compute_collective_box(total_boxes: int) -> int:
     based on sum of all three type of boxes
 
     Arguments:
-        total_boxes {int} -- Sum of all three box types
+        total_boxes {int} -- Sum of all three types of boxes
 
     Returns:
         int -- Number of collective boxes required for order
@@ -36,12 +36,12 @@ def optimize(small: int, medium: int, large: int, collective: int) -> List:
         collective {int} -- Quantity of collective boxes
 
     Returns:
-        List -- List of box type quantities [small, medium, large, collective]
+        List -- List of box quantities [small, medium, large, collective]
     """
     if medium == 1 and large == 1:
-        return [small, 0, 2, collective]
+        return [small, 0, medium + large, collective]
 
-    if small > 0 and large > 0 and small == large:
+    if small == 1 and large == 1:
         return [0, small + large, 0, collective]
 
     return [small, medium, large, collective]
@@ -60,7 +60,7 @@ def pack_into_boxes(order_size: int, small=0, medium=0, large=0) -> List:
         large {int} -- Quantity of large boxes (default: {0})
 
     Returns:
-        List -- List of box type quantities [small, medium, large, collective]
+        List -- List of box quantities [small, medium, large, collective]
     """
     if order_size <= 0:
         return optimize(

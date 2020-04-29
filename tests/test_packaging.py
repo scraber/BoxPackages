@@ -5,14 +5,6 @@ from tests.expected_results import EXPECTED_RESULTS
 
 
 class TestPackaging(TestCase):
-    def test_collective_box(self):
-        self.assertEqual(packaging.compute_collective_box(1), 0)
-        self.assertEqual(packaging.compute_collective_box(2), 1)
-        self.assertEqual(packaging.compute_collective_box(3), 1)
-        self.assertEqual(packaging.compute_collective_box(4), 2)
-        self.assertEqual(packaging.compute_collective_box(6), 2)
-        self.assertEqual(packaging.compute_collective_box(7), 3)
-
     def test_packaging_success(self):
         # Auxiliary test to check if correctly copied all results from pdf file
         self.assertEqual(len(EXPECTED_RESULTS), 36)
